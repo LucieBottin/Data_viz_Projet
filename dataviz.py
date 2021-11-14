@@ -68,7 +68,6 @@ def bar_chart(a) :
 def convert_df(df):
      return df.to_csv().encode('utf-8')
 
-@st.cache(suppress_st_warning=True)
 if __name__ == "__main__":
 
     df = pd.read_csv('sample_2020.csv')
