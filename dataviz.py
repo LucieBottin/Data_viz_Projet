@@ -6,7 +6,6 @@ import plotly.express as px
 st.caption("Lucie Bottin - M1-APP-BDIA - Streamlit projet, 2020 csv\n")
 st.title("Trouve ta nouvelle maison 🏡😊")
 
-@st.cache(suppress_st_warning=True)
 def create_map(df):
     df['latitude']=pd.to_numeric(df['latitude'])
     df['longitude']=pd.to_numeric(df['longitude'])
@@ -22,7 +21,6 @@ def pie(df) :
     st.header("Types de biens disponibles")
     st.plotly_chart(fig)
 
-@st.cache(suppress_st_warning=True)
 def sidebar(df) :
 
     data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', 'valeur_fonciere', 'surface_terrain','latitude', 'longitude']]
@@ -56,7 +54,6 @@ def sidebar(df) :
    
     return data_set
 
-@st.cache(suppress_st_warning=True)
 def bar_chart(a) :
 
     st.header("Valeurs foncières des biens qui correspondent à vos choix :")
@@ -64,7 +61,6 @@ def bar_chart(a) :
     st.header("Surface extérieur des biens qui correspondent à vos choix :")
     st.bar_chart(data=a['surface_terrain'])
     
-@st.cache(suppress_st_warning=True)
 def convert_df(df):
      return df.to_csv().encode('utf-8')
 
