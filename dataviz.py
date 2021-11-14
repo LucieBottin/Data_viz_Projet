@@ -42,7 +42,6 @@ def pie(df) :
     st.header("Types de biens disponibles")
     st.plotly_chart(fig)
     
-@st.cache(suppress_st_warning=True)
 def sidebar(df) :
 
     data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', 'valeur_fonciere', 'surface_terrain','latitude', 'longitude']]
