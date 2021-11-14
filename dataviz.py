@@ -103,5 +103,4 @@ if __name__ == "__main__":
         )
         create_map(a)
         bar_chart(a)
-        
-        
+    log(pie)        
