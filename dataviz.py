@@ -19,6 +19,7 @@ def pie(df) :
     local_count = df['type_local'].value_counts()
     local_count = pd.DataFrame({'Names' :local_count.index, 'Values' :local_count.values})
     fig = px.pie(local_count, values='Values', names='Names')
+    st.header("Types de biens disponibles")
     st.plotly_chart(fig)
 
 
@@ -79,6 +80,7 @@ if __name__ == "__main__":
     pie(df)
     a = sidebar(df)
     if not (a.empty):
+        st.header("Liste des biens selon vox choix")
         st.write(a)
         create_map(a)
         bar_chart(a)
