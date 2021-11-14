@@ -6,6 +6,7 @@ import plotly.express as px
 
 st.title("Trouve ta nouvelle maison 🏡😊")
 
+st.cache(suppress_st_warning=True)
 def create_map(sub_df):
     sub_df['latitude']=pd.to_numeric(sub_df['latitude'])
     sub_df['longitude']=pd.to_numeric(sub_df['longitude'])
@@ -25,9 +26,7 @@ def pie(df) :
     st.header("Types de biens disponibles")
     st.plotly_chart(fig)
 
-
-
-
+st.cache(suppress_st_warning=True)
 def sidebar(df) :
 
     data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', 'valeur_fonciere', 'surface_terrain','latitude', 'longitude']]
@@ -65,6 +64,7 @@ def sidebar(df) :
 
     return data_set
 
+st.cache(suppress_st_warning=True)
 def bar_chart(a) :
 
     st.header("Valeurs foncières des biens qui correspondent à vos choix :")
@@ -72,6 +72,7 @@ def bar_chart(a) :
     st.header("Surface extérieur des biens qui correspondent à vos choix :")
     st.bar_chart(data=a['surface_terrain'])
 
+st.cache(suppress_st_warning=True)
 if __name__ == "__main__":
 
     #file_path = "full_2020.csv"
