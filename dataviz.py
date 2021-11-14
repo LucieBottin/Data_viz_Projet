@@ -78,7 +78,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(10, 7))
     pie(df)
     a = sidebar(df)
-    if (a.empty):
+    if not (a.empty):
         st.write(a)
         create_map(a)
         bar_chart(a)
