@@ -83,14 +83,15 @@ def bar_chart(a) :
     st.bar_chart(data=a['surface_terrain'])
     
 def histogram(df) :
-
+    
+    fig = plt.subplots()
     x = df['surface_terrain']
     y = df['valeur_fonciere']
 
     plt.bar(x,y,align='center')
     plt.xlabel('Surface terrain')
     plt.ylabel('Valeur foncière')
-    plt.show()
+    return fig
     
 def convert_df(df):
      return df.to_csv().encode('utf-8')
@@ -113,4 +114,5 @@ if __name__ == "__main__":
         )
         create_map(a)
         bar_chart(a) 
-        histogram(a)
+        fig = histogram(a)
+        st.write(fig)
