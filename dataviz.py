@@ -4,10 +4,13 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 
 
+st.title("Trouve ta nouvelle maison 🏡😊")
+
 def create_map(sub_df):
     sub_df['latitude']=pd.to_numeric(sub_df['latitude'])
     sub_df['longitude']=pd.to_numeric(sub_df['longitude'])
     sub_df.dropna(subset = ['latitude', 'longitude'], inplace = True)
+    st.caption("Lieux des biens :")
     st.map(sub_df[['latitude', 'longitude']])
 
 #def count_rows(rows) :
@@ -80,7 +83,7 @@ if __name__ == "__main__":
     pie(df)
     a = sidebar(df)
     if not (a.empty):
-        st.header("Liste des biens selon vox choix")
+        st.header("Liste des biens selon vos choix")
         st.write(a)
         create_map(a)
         bar_chart(a)
