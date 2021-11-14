@@ -3,6 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 import time
+import datetime
+import os
+import streamlit.components.v1 as components
 
 st.caption("Lucie Bottin - M1-APP-BDIA - Streamlit projet, 2020 csv\n")
 st.title("Trouve ta nouvelle maison 🏡😊")
@@ -30,8 +33,7 @@ st.sidebar.title("Choose the dataset you want to work with :")
 components.iframe("https://cdn.futura-sciences.com/buildsv6/images/largeoriginal/a/0/f/a0fc73919d_50166390_chaton.jpg")
 
 ############
-import os
-import streamlit.components.v1 as components
+
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
 # the component, and True when we're ready to package and distribute it.
