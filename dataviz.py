@@ -10,7 +10,7 @@ def create_map(sub_df):
     sub_df['latitude']=pd.to_numeric(sub_df['latitude'])
     sub_df['longitude']=pd.to_numeric(sub_df['longitude'])
     sub_df.dropna(subset = ['latitude', 'longitude'], inplace = True)
-    st.text("Lieux des biens :")
+    st.header("Lieux des biens :")
     st.map(sub_df[['latitude', 'longitude']])
 
 #def count_rows(rows) :
@@ -68,9 +68,9 @@ def sidebar(df) :
 
 def bar_chart(a) :
 
-    st.title("Valeurs foncières des biens qui correspondent à vos choix :")
+    st.header("Valeurs foncières des biens qui correspondent à vos choix :")
     st.bar_chart(data=a["valeur_fonciere"])
-    st.title("Surface extérieur des biens qui correspondent à vos choix :")
+    st.header("Surface extérieur des biens qui correspondent à vos choix :")
     st.bar_chart(data=a['surface_terrain'])
 
 if __name__ == "__main__":
