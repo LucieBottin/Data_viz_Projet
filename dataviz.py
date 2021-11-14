@@ -41,7 +41,8 @@ def pie(df) :
     fig = px.pie(local_count, values='Values', names='Names')
     st.header("Types de biens disponibles")
     st.plotly_chart(fig)
-
+    
+@st.cache(suppress_st_warning=True)
 def sidebar(df) :
 
     data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', 'valeur_fonciere', 'surface_terrain','latitude', 'longitude']]
@@ -82,7 +83,7 @@ def bar_chart(a) :
     st.header("Surface extérieur des biens qui correspondent à vos choix :")
     st.bar_chart(data=a['surface_terrain'])
     
-    
+@st.cache(suppress_st_warning=True)    
 def convert_df(df):
      return df.to_csv().encode('utf-8')
 
