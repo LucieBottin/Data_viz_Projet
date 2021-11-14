@@ -56,12 +56,7 @@ def sidebar(df) :
             mask3 = (data_set['surface_terrain'] > option4)
             data_set = data_set[mask3]
             
-    reset = st.sidebar.button(label="Reset")
-    if reset :
-        option = 'Choisir'
-        option2 = 'Choisir'
-        option3 = 'Choisir'
-
+   
     return data_set
 
 st.cache(suppress_st_warning=True)
@@ -70,7 +65,7 @@ def bar_chart(a) :
     st.header("Valeurs foncières des biens qui correspondent à vos choix :")
     st.bar_chart(data=a["valeur_fonciere"])
     st.header("Surface extérieur des biens qui correspondent à vos choix :")
-    st.bar_chart(data=a['surface_terrain'])
+    st.bar_chart(data=a['surface_terrain'], color='red')
 
 st.cache(suppress_st_warning=True)
 if __name__ == "__main__":
