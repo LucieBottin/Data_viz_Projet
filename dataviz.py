@@ -83,3 +83,4 @@ if __name__ == "__main__":
     reset = st.sidebar.button(label="Reset")
     if reset :   
         a = df
+        main()
