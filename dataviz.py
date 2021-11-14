@@ -29,8 +29,8 @@ def pie(df) :
 st.cache(suppress_st_warning=True)
 def sidebar(df) :
 
-    data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', 'valeur_fonciere', 'surface_terrain','latitude', 'longitude']]
-    liste_departements = df['code_postal'].dropna().astype(int).to_list()
+    data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', 'valeur_fonciere', 'surface_terrain','latitude', 'longitude']].astype(int)
+    liste_departements = df['code_postal'].dropna().to_list()
     st.sidebar.header("Mes critères :")
     option = st.sidebar.selectbox('Quel type de local vous intéresse ?', ('Choisir', 'Maison', 'Appartement', 'Dépendance','Local industriel. commercial ou assimilé'))
     option2 = st.sidebar.selectbox('Combien de pieces ?', ['Choisir']+[0,1,2,3,4,5])
