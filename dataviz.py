@@ -89,4 +89,4 @@ if __name__ == "__main__":
         bar_chart(a)
     reset = st.sidebar.button(label="Reset")
     if reset :   
-        a = reset
+        a = df
