@@ -63,7 +63,7 @@ def sidebar(df) :
     return data_set
 
 def bar_chart(a) :
-    
+
     st.title("Valeurs foncières des biens qui correspondent à vos choix :")
     st.bar_chart(data=a["valeur_fonciere"])
     st.title("Surface extérieur des biens qui correspondent à vos choix :")
@@ -78,6 +78,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(10, 7))
     pie(df)
     a = sidebar(df)
-    st.write(a)
-    create_map(a)
-    bar_chart(a)
+    if (a.empty):
+        st.write(a)
+        create_map(a)
+        bar_chart(a)
