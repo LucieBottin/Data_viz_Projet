@@ -84,7 +84,7 @@ def bar_chart(a) :
     
 def histogram(df) :
 
-    arr = dt['surface_terrain']
+    arr = df['surface_terrain']
     fig, ax = plt.subplots()
     ax.hist(arr, bins=24)
     plt.title('Surface du terrain en fonction de la valeur foncière')
@@ -113,4 +113,5 @@ if __name__ == "__main__":
         )
         create_map(a)
         bar_chart(a) 
-        histogram(a)
+        fig = histogram(a)
+        st.write(fig)
