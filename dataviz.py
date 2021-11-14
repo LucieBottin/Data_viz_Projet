@@ -84,13 +84,12 @@ def bar_chart(a) :
     
 def histogram(df) :
 
-    arr = df[['surface_terrain','valeur_fonciere']]
-    fig, ax = plt.subplots()
-    ax.hist(arr, bins=24)
-    plt.title('Surface du terrain en fonction de la valeur foncière')
-    plt.xlabel('Surface de terrain')
-    plt.ylabel('Valeur')
-    return fig
+    x = df['surface_terrain']
+    y = df['valeur_fonciere']
+
+    plt.bar(x,y,align='center')
+    plt.xlabel('Surface terrain')
+    plt.ylabel('Valeur foncière')
     
 def convert_df(df):
      return df.to_csv().encode('utf-8')
@@ -114,4 +113,4 @@ if __name__ == "__main__":
         create_map(a)
         bar_chart(a) 
         fig = histogram(a)
-        st.write(fig)
+        plt.show(fig)
