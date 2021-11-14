@@ -62,8 +62,7 @@ def sidebar(df) :
     reset = st.sidebar.button(label="Reset")
 
     if reset :   
-        data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', "valeur_fonciere", 'surface_terrain','latitude', 'longitude']]
-
+        data_set = df.empty
     return data_set
 
 def bar_chart(a) :
@@ -79,6 +78,7 @@ if __name__ == "__main__":
     #df_full = pd.read_csv(file_path, delimiter = ',')
     #csv_sample = df_full.head(100000).to_csv('sample_2020.csv')
     df = pd.read_csv('sample_2020.csv')
+    reset = pd.DataFrame(columns=[])
     fig, ax = plt.subplots(figsize=(10, 7))
     pie(df)
     a = sidebar(df)
@@ -87,3 +87,6 @@ if __name__ == "__main__":
         st.write(a)
         create_map(a)
         bar_chart(a)
+    reset = st.sidebar.button(label="Reset")
+    if reset :   
+        a = reset
