@@ -115,4 +115,4 @@ if __name__ == "__main__":
         create_map(a)
         bar_chart(a) 
         fig = histogram(a)
-        st.write(fig)
+        st.pyplot(fig)
