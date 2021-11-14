@@ -78,7 +78,6 @@ if __name__ == "__main__":
     #df_full = pd.read_csv(file_path, delimiter = ',')
     #csv_sample = df_full.head(100000).to_csv('sample_2020.csv')
     df = pd.read_csv('sample_2020.csv')
-    reset = pd.DataFrame(columns=[])
     fig, ax = plt.subplots(figsize=(10, 7))
     pie(df)
     a = sidebar(df)
