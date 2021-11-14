@@ -66,6 +66,12 @@ def bar_chart(a) :
     st.bar_chart(data=a["valeur_fonciere"])
     st.header("Surface extérieur des biens qui correspondent à vos choix :")
     st.bar_chart(data=a['surface_terrain'])
+    
+    
+    
+@st.cache
+def convert_df(df):
+     return df.to_csv().encode('utf-8')
 
 st.cache(suppress_st_warning=True)
 if __name__ == "__main__":
@@ -80,5 +86,14 @@ if __name__ == "__main__":
     if not (a.empty):
         st.header("Liste des biens selon vos choix")
         st.write(a)
+        csv = convert_df(a)
+        st.download_button(
+            label="Télécharger la liste",
+            data=csv,
+            file_name='liste_biens.csv',
+            mime='text/csv',
+        )
         create_map(a)
         bar_chart(a)
+        
+        
