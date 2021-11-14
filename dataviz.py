@@ -77,9 +77,9 @@ def sidebar(df) :
 
 def bar_chart(a) :
 
-    st.header("Valeurs foncières des biens qui correspondent à vos choix :")
+    st.header("Valeur foncière des biens qui correspondent à vos choix :")
     st.bar_chart(data=a["valeur_fonciere"])
-    st.header("Surface extérieur des biens qui correspondent à vos choix :")
+    st.header("Surface extérieure des biens qui correspondent à vos choix :")
     st.bar_chart(data=a['surface_terrain'])
     
 @st.cache(suppress_st_warning=True)    
