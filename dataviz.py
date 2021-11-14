@@ -6,17 +6,13 @@ import plotly.express as px
 st.caption("Lucie Bottin - M1-APP-BDIA - Streamlit projet, 2020 csv\n")
 st.title("Trouve ta nouvelle maison 🏡😊")
 
-st.cache(suppress_st_warning=True)
-def create_map(sub_df):
-    sub_df['latitude']=pd.to_numeric(sub_df['latitude'])
-    sub_df['longitude']=pd.to_numeric(sub_df['longitude'])
-    sub_df.dropna(subset = ['latitude', 'longitude'], inplace = True)
+@st.cache(suppress_st_warning=True)
+def create_map(df):
+    df['latitude']=pd.to_numeric(df['latitude'])
+    df['longitude']=pd.to_numeric(df['longitude'])
+    df.dropna(subset = ['latitude', 'longitude'], inplace = True)
     st.header("Lieux des biens :")
-    st.map(sub_df[['latitude', 'longitude']])
-
-#def count_rows(rows) :
-    #return len(rows)
-    
+    st.map(df[['latitude', 'longitude']])
 
 def pie(df) :
 
@@ -26,17 +22,17 @@ def pie(df) :
     st.header("Types de biens disponibles")
     st.plotly_chart(fig)
 
-st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True)
 def sidebar(df) :
 
     data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', 'valeur_fonciere', 'surface_terrain','latitude', 'longitude']]
     liste_departements = df['code_postal'].dropna().astype(int).to_list()
+    
     st.sidebar.header("Mes critères :")
     option = st.sidebar.selectbox('Quel type de local vous intéresse ?', ('Choisir', 'Maison', 'Appartement', 'Dépendance','Local industriel. commercial ou assimilé'))
     option2 = st.sidebar.selectbox('Combien de pieces ?', ['Choisir']+[0,1,2,3,4,5])
     option3 = st.sidebar.selectbox('Dans quel département ?', ['Choisir']+liste_departements)
     check = st.sidebar.checkbox("Terrain extérieur")
-
 
     if option  :
         mask = (data_set['type_local'] == option)
@@ -60,7 +56,7 @@ def sidebar(df) :
    
     return data_set
 
-st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True)
 def bar_chart(a) :
 
     st.header("Valeurs foncières des biens qui correspondent à vos choix :")
@@ -68,18 +64,13 @@ def bar_chart(a) :
     st.header("Surface extérieur des biens qui correspondent à vos choix :")
     st.bar_chart(data=a['surface_terrain'])
     
-    
-    
-@st.cache
+@st.cache(suppress_st_warning=True)
 def convert_df(df):
      return df.to_csv().encode('utf-8')
 
-st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True)
 if __name__ == "__main__":
 
-    #file_path = "full_2020.csv"
-    #df_full = pd.read_csv(file_path, delimiter = ',')
-    #csv_sample = df_full.head(100000).to_csv('sample_2020.csv')
     df = pd.read_csv('sample_2020.csv')
     fig, ax = plt.subplots(figsize=(10, 7))
     pie(df)
