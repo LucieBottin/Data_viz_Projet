@@ -1,10 +1,6 @@
-from pandas.io.parsers import read_csv
 import streamlit as st
-import numpy as np
 import pandas as pd 
-import time
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pydeck as pdk
 import plotly.express as px
 
