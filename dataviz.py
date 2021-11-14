@@ -6,6 +6,83 @@ import plotly.express as px
 st.caption("Lucie Bottin - M1-APP-BDIA - Streamlit projet, 2020 csv\n")
 st.title("Trouve ta nouvelle maison 🏡😊")
 
+#D E C O R A T O R S
+#log execution time
+@st.cache(suppress_st_warning=True) 
+def log(func):
+    def wrapper(*args,**kwargs):
+        with open("logs.txt","a") as f:
+            f.write("Called function with " + " ".join([str(arg) for arg in args]) + " at " + str(datetime.datetime.now()) + "\n")
+        val = func(*args,**kwargs)
+        return val
+    return wrapper
+
+@log
+def run(a,b,c=9):
+    print(a+b+c)
+
+run(1,3,c=9)
+
+
+st.sidebar.title("Choose the dataset you want to work with :")
+
+components.iframe("https://cdn.futura-sciences.com/buildsv6/images/largeoriginal/a/0/f/a0fc73919d_50166390_chaton.jpg")
+
+############
+import os
+import streamlit.components.v1 as components
+
+# Create a _RELEASE constant. We'll set this to False while we're developing
+# the component, and True when we're ready to package and distribute it.
+# (This is, of course, optional - there are innumerable ways to manage your
+# release process.)
+_RELEASE = False
+
+# Declare a Streamlit component. `declare_component` returns a function
+# that is used to create instances of the component. We're naming this
+# function "_component_func", with an underscore prefix, because we don't want
+# to expose it directly to users. Instead, we will create a custom wrapper
+# function, below, that will serve as our component's public API.
+
+# It's worth noting that this call to `declare_component` is the
+# *only thing* you need to do to create the binding between Streamlit and
+# your component frontend. Everything else we do in this file is simply a
+# best practice.
+
+if not _RELEASE:
+    _component_func = components.declare_component(
+
+        "my_component",
+        url="http://localhost:8501",
+    )
+else:
+    
+    parent_dir = os.path.dirname(os.path.abspath(__file__))
+    build_dir = os.path.join(parent_dir, "frontend/build")
+    _component_func = components.declare_component("my_component", path=build_dir)
+
+def my_component(name, key=None):
+    
+    component_value = _component_func(name=name, key=key, default=0)
+
+    return component_value
+
+if not _RELEASE:
+    import streamlit as st
+
+    st.subheader("Component with constant args")
+
+    num_clicks = my_component("World")
+    st.markdown("You've clicked %s times!" % int(num_clicks))
+
+    st.markdown("---")
+    st.subheader("Component with variable args")
+
+    name_input = st.text_input("Enter a name", value="Streamlit")
+    num_clicks = my_component(name_input, key="foo")
+    st.markdown("You've clicked %s times!" % int(num_clicks))
+############
+
 def create_map(df):
     df['latitude']=pd.to_numeric(df['latitude'])
     df['longitude']=pd.to_numeric(df['longitude'])
