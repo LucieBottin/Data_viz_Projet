@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-
+st.caption("Lucie Bottin - M1-APP-BDIA - Streamlit projet, 2020 csv\n")
 st.title("Trouve ta nouvelle maison 🏡😊")
 
 st.cache(suppress_st_warning=True)
