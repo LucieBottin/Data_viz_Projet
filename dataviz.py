@@ -91,6 +91,7 @@ def histogram(df) :
     plt.bar(x,y,align='center')
     plt.xlabel('Surface terrain')
     plt.ylabel('Valeur foncière')
+    plt.show()
     return fig
     
 def convert_df(df):
@@ -114,5 +115,4 @@ if __name__ == "__main__":
         )
         create_map(a)
         bar_chart(a) 
-        fig = histogram(a)
-        st.pyplot(fig)
+        histogram(a)
