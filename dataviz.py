@@ -65,7 +65,7 @@ def bar_chart(a) :
     st.header("Valeurs foncières des biens qui correspondent à vos choix :")
     st.bar_chart(data=a["valeur_fonciere"])
     st.header("Surface extérieur des biens qui correspondent à vos choix :")
-    st.bar_chart(data=a['surface_terrain'], color='red')
+    st.bar_chart(data=a['surface_terrain'])
 
 st.cache(suppress_st_warning=True)
 if __name__ == "__main__":
