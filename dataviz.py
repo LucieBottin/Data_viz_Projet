@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd 
 import matplotlib.pyplot as plt
-import pydeck as pdk
 import plotly.express as px
 
 
@@ -34,13 +33,6 @@ def sidebar(df) :
     option3 = st.sidebar.selectbox('Dans quel département ?', ['Choisir']+[cp for cp in range(1000, 6000)])
     check = st.sidebar.checkbox("Terrain extérieur")
 
-    if check :
-        option4 = st.sidebar.slider('Surface terrain en m2 ?',20,2000)
-        
-        if option4  :
-            mask3 = (data_set['surface_terrain'] > option4)
-            data_set = data_set[mask3]
-
 
     if option  :
         mask = (data_set['type_local'] == option)
@@ -54,8 +46,14 @@ def sidebar(df) :
         mask2 = (data_set['code_postal'] == option3)
         data_set = data_set[mask2]
 
+    if check :
+        option4 = st.sidebar.slider('Surface terrain en m2 ?',20,2000)
+        
+        if option4  :
+            mask3 = (data_set['surface_terrain'] > option4)
+            data_set = data_set[mask3]
+
     
-    st.write(data_set)
 
     reset = st.sidebar.button(label="Reset")
 
@@ -64,6 +62,12 @@ def sidebar(df) :
 
     return data_set
 
+def bar_chart(a) :
+    
+    st.title("Valeurs foncières des biens qui correspondent à vos choix :")
+    st.bar_chart(data=a["valeur_fonciere"])
+    st.title("Surface extérieur des biens qui correspondent à vos choix :")
+    st.bar_chart(data=a['surface_terrain'])
 
 if __name__ == "__main__":
 
@@ -71,11 +75,9 @@ if __name__ == "__main__":
     #df_full = pd.read_csv(file_path, delimiter = ',')
     #csv_sample = df_full.head(100000).to_csv('sample_2020.csv')
     df = pd.read_csv('sample_2020.csv')
+    fig, ax = plt.subplots(figsize=(10, 7))
     pie(df)
     a = sidebar(df)
-    fig, ax = plt.subplots(figsize=(10, 7))
+    st.write(a)
     create_map(a)
-    st.title("Valeurs foncières des biens qui correspondent à vos choix :")
-    st.bar_chart(data=a["valeur_fonciere"])
-    st.title("Surface extérieur des biens qui correspondent à vos choix :")
-    st.bar_chart(data=a['surface_terrain'])
+    bar_chart(a)
