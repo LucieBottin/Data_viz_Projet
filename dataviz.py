@@ -57,12 +57,6 @@ def sidebar(df) :
             mask3 = (data_set['surface_terrain'] > option4)
             data_set = data_set[mask3]
 
-    
-
-    reset = st.sidebar.button(label="Reset")
-
-    if reset :   
-        data_set = df.empty
     return data_set
 
 def bar_chart(a) :
