@@ -30,11 +30,11 @@ st.cache(suppress_st_warning=True)
 def sidebar(df) :
 
     data_set = df[['type_local', 'nombre_pieces_principales', 'code_postal', 'valeur_fonciere', 'surface_terrain','latitude', 'longitude']]
-
+    liste_departements = df['code_postal'].values()
     st.sidebar.header("Mes critères :")
     option = st.sidebar.selectbox('Quel type de local vous intéresse ?', ('Choisir', 'Maison', 'Appartement', 'Dépendance','Local industriel. commercial ou assimilé'))
     option2 = st.sidebar.selectbox('Combien de pieces ?', ['Choisir']+[0,1,2,3,4,5])
-    option3 = st.sidebar.selectbox('Dans quel département ?', ['Choisir']+[cp for cp in range(1000, 6000)])
+    option3 = st.sidebar.selectbox('Dans quel département ?', ['Choisir']+liste_departements)
     check = st.sidebar.checkbox("Terrain extérieur")
 
 
