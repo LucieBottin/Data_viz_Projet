@@ -10,7 +10,7 @@ def create_map(sub_df):
     sub_df['latitude']=pd.to_numeric(sub_df['latitude'])
     sub_df['longitude']=pd.to_numeric(sub_df['longitude'])
     sub_df.dropna(subset = ['latitude', 'longitude'], inplace = True)
-    st.caption("Lieux des biens :")
+    st.text("Lieux des biens :")
     st.map(sub_df[['latitude', 'longitude']])
 
 #def count_rows(rows) :
