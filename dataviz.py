@@ -84,7 +84,6 @@ def bar_chart(a) :
     
 def histogram(df) :
     
-    fig = plt.subplots()
     x = df['surface_terrain']
     y = df['valeur_fonciere']
 
@@ -92,7 +91,6 @@ def histogram(df) :
     plt.xlabel('Surface terrain')
     plt.ylabel('Valeur foncière')
     plt.show()
-    return fig
     
 def convert_df(df):
      return df.to_csv().encode('utf-8')
