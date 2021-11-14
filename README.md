@@ -8,3 +8,6 @@ Vous pourrez :
   - avoir la liste des biens et la télécharger sous fromat csv
   - deux graphes qui présentent deux types d'évolution
 
+## Dataset
+
+J'ai fait le choix de faire un sample des 100 000 premières lignes du dataset 2020 car je n'ai pas réussi à faire avec le dataset entier.
