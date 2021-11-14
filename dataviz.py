@@ -56,6 +56,12 @@ def sidebar(df) :
         if option4  :
             mask3 = (data_set['surface_terrain'] > option4)
             data_set = data_set[mask3]
+            
+    reset = st.sidebar.button(label="Reset")
+    if reset :
+        option = 'Choisir'
+        option2 = 'Choisir'
+        option3 = 'Choisir'
 
     return data_set
 
@@ -80,7 +86,3 @@ if __name__ == "__main__":
         st.write(a)
         create_map(a)
         bar_chart(a)
-    reset = st.sidebar.button(label="Reset")
-    if reset :   
-        a = df
-        main()
