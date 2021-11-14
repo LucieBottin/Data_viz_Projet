@@ -82,15 +82,6 @@ def bar_chart(a) :
     st.header("Surface extérieur des biens qui correspondent à vos choix :")
     st.bar_chart(data=a['surface_terrain'])
     
-def histogram(df) :
-    
-    x = df['surface_terrain']
-    y = df['valeur_fonciere']
-
-    plt.bar(x,y,align='center')
-    plt.xlabel('Surface terrain')
-    plt.ylabel('Valeur foncière')
-    plt.show()
     
 def convert_df(df):
      return df.to_csv().encode('utf-8')
@@ -112,5 +103,4 @@ if __name__ == "__main__":
             mime='text/csv',
         )
         create_map(a)
-        bar_chart(a) 
-        histogram(a)
+        bar_chart(a)
